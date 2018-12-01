@@ -84,13 +84,9 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-  console.log(sumArr);
   var sum1= sum(sumArr[0],sumArr[1]);
-  console.log(sum1);
   sum1= sum(sum1[0],sumArr[2]);
-  console.log(sum1);
   var message1 = sumArr[0] + ',' + sumArr[1]+',' + sumArr[2]+' was passed in as an array of numbers, and '+ sum1[0] + ' is their sum.';
-  console.log(message1);
   return [sum1[0],message1];
 }
 
@@ -112,13 +108,9 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
-  console.log(multArr);
   var prod1= multiply(multArr[0],multArr[1]);
-  console.log(prod1);
   prod1= multiply(prod1[0],multArr[2]);
-  console.log(prod1);
   var message1 = 'The numbers '+multArr[0] + ',' + multArr[1]+',' + multArr[2]+' have a product of ' + prod1[0] + '.';
-  console.log(message1);
   return [prod1[0],message1];
 }
 
@@ -148,10 +140,18 @@ Test this function by hand in the console to get it working, and when you think 
 var testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-
+  var prod1= multiply(dynamicArray[0],dynamicArray[1]);
+  for(var i=2; i<dynamicArray.length; i++){
+    prod1= multiply(prod1[0],dynamicArray[i]);
+  }
+  var message= 'The numbers ';
+  for(i=0;i<dynamicArray.length-1;i++){
+    message= message + dynamicArray[i] +',';
+  }
+  message=message + dynamicArray[(dynamicArray.length-1)]+' have a product of '+prod1[0]+'.';
+  return [prod1[0],message];
 }
-
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+ testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
